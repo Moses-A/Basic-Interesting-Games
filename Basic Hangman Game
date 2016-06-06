@@ -1,4 +1,3 @@
-// Hangman
 // The classic game of hangman
 // Written by Moses Arocha
 
@@ -13,51 +12,54 @@ using namespace std;
 
 int main()
 {
-	  char guess;
 
-    // set-up
-    const int MAX_WRONG = 9;  // maximum number of incorrect guesses allowed
+char guess;				     // the guess the user makes
+srand(static_cast<unsigned int>(time(0)));   // seeds the generation of the random number based on time
+const string THE_WORD = words[0];            // word to guess
+int wrong = 0;                               // number of incorrect guesses
+string soFar(THE_WORD.size(), '-');          // word guessed so far
+string used = "";                            // letters already guessed
 
-    vector<string> words;  // collection of possible words to guess
-		words.push_back("ELEPHANT");
-		words.push_back("GORILLA");
-		words.push_back("SHEPHERD");
-		words.push_back("PENGUIN");
-		words.push_back("TORTOISE");
-		words.push_back("ABYSSINIAN");
-		words.push_back("ALLIGATOR");
-		words.push_back("ANGELFISH");
-		words.push_back("ANTEATER");
-		words.push_back("ARMADILLO");
-		words.push_back("AXOLOTL");
-		words.push_back("JELLYFISH");
-		words.push_back("RHINOCEROS");
-		words.push_back("MEERKAT");
-		words.push_back("HIPPOPOTAMUS");
+// set-up, using vectors
+const int MAX_WRONG = 9;  // maximum number of incorrect guesses allowed
 
-	vector<string> execution; // collection of man who hanged vector
-		execution.push_back(" ______ ");
-		execution.push_back(" |    | ");
-		execution.push_back(" |     ");
-		execution.push_back(" |     ");
-		execution.push_back(" |     ");
-		execution.push_back(" |     ");
-		execution.push_back("_|_    ");
+vector<string> words;  // collection of possible words to guess
+	words.push_back("ELEPHANT");
+	words.push_back("GORILLA");
+	words.push_back("SHEPHERD");
+	words.push_back("PENGUIN");
+	words.push_back("TORTOISE");
+	words.push_back("ABYSSINIAN");
+	words.push_back("ALLIGATOR");
+	words.push_back("ANGELFISH");
+	words.push_back("ANTEATER");
+	words.push_back("ARMADILLO");
+	words.push_back("AXOLOTL");
+	words.push_back("JELLYFISH");
+	words.push_back("RHINOCEROS");
+	words.push_back("MEERKAT");
+	words.push_back("HIPPOPOTAMUS");
+
+vector<string> execution; // collection of man who hanged vector
+	execution.push_back(" ______ ");
+	execution.push_back(" |    | ");
+	execution.push_back(" |     ");
+	execution.push_back(" |     ");
+	execution.push_back(" |     ");
+	execution.push_back(" |     ");
+	execution.push_back("_|_    ");
 
 
-	vector<string>::iterator myIterator;
-	vector<string>::const_iterator iter;
+vector<string>::iterator myIterator;
+vector<string>::const_iterator iter;
 
 
-			srand(static_cast<unsigned int>(time(0)));
-			random_shuffle(words.begin(), words.end());
-			const string THE_WORD = words[0];            // word to guess
-			int wrong = 0;                               // number of incorrect guesses
-			string soFar(THE_WORD.size(), '-');          // word guessed so far
-			string used = "";                            // letters already guessed
+random_shuffle(words.begin(), words.end()); // randomly shuffles the words to guess
+	
 
-    cout << "\t Welcome To Wonderful Game of Hangman, Animal Theme Edition! \n\n\n";
-	cout << " Rules: Guess a series of letters in an attempt to guess the randomized animal. " << endl;
+//the beginning of what the user sees is here, the game begins here
+cout << "\t Welcome To Wonderful Game of Hangman, Animal Theme Edition! \n\n\n";
+cout << " Rules: Guess a series of letters in an attempt to guess the randomized animal. " << endl;
 
     // main loop
     while ((wrong < MAX_WRONG) && (soFar != THE_WORD))
@@ -68,14 +70,14 @@ int main()
 			}
 
         cout << "\n\n\t You have " << (MAX_WRONG - wrong);
-		cout << " incorrect guesses left. Watch out! \n";
+	cout << " incorrect guesses left. Watch out! \n";
         cout << "\n Be Careful! You have already used these letters: \n" << used << endl;
         cout << "\n So far, the word is: \n" << soFar << endl;
 
       if (wrong != 8)
 	  {
 			cout << "\n\n Please, Enter your guess: ";
-			cin >> guess;
+			cin >> guess; // no check all function, guess has to be a value already predicted
 			guess = toupper(guess); //make uppercase since secret word in uppercase
 			while (used.find(guess) != string::npos)
 				{
@@ -151,7 +153,7 @@ int main()
 		  wrong++;
 	  }
 
-			// shut down
+		// shut down
 		if (wrong == MAX_WRONG)
 			{
 				cout << "\n You've been died!";
