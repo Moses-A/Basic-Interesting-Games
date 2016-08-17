@@ -38,32 +38,25 @@ int main()
 		vector<string>::iterator myIterator;
 		vector<string>::const_iterator iter;
 
-			  cout << "\t\t Welcome To The Wonderful Game of Cards." << endl;
-			  cout << "\n Rules: Enter a card, formatted like below, and see if the magician can guess." << endl;
-        
+		  cout << "\t\t Welcome To The Wonderful Game of Cards." << endl;
+		  cout << "\n Rules: Enter a card, formatted like below, and see if the magician can guess." << endl;
+
 		sort(CardDeck.begin(), CardDeck.end());
 
-		   cout << "\n\n Here is The Simple Card Deck: \n";
-				for (iter = CardDeck.begin(); iter != CardDeck.end(); ++iter)
-				{
-					cout << "\t" << *iter << endl;
-				}
+	   	cout << "\n\n Here is The Simple Card Deck: \n";
+		for (iter = CardDeck.begin(); iter != CardDeck.end(); ++iter)
+		{
+			cout << "\t" << *iter << endl;
+		}
 
 		cout << "\n Please enter the card of your thoughts: ";
-			getline (cin, UserCard);
+		getline (cin, UserCard);
 
 		while (reset == 'y' || reset == 'Y')
 			{
 				srand(static_cast<unsigned int>(time(0)));
 				random_shuffle(CardDeck.begin(), CardDeck.end());
 					cout << "\n\t Right now the deck of cards is being shuffled. " << endl;
-
-							//cout << "\n\n Here is The Shuffled Card Deck: \n";
-								//for (iter = CardDeck.begin(); iter != CardDeck.end(); ++iter)
-									//{
-									//	cout << "\t" << *iter << endl;
-									//}
-
 					cout << "\n Would you like to shuffle the deck again? [Y/N] ";
 						cin >> reset;
 			}
