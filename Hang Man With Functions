@@ -1,4 +1,3 @@
-// Hangman
 // The classic game of hangman
 // Hang Man with functions
 // Author is Moses Arocha
@@ -12,21 +11,21 @@
 
 using namespace std;
 
-	int wrong = 0;  
+int wrong = 0;  
 
-	char guess;
+char guess;
 
-	int gamePoints = 100;
+int gamePoints = 100;
 
-	const int MAX_WRONG = 8;  // maximum number of incorrect guesses allowed
+const int MAX_WRONG = 8;  // maximum number of incorrect guesses allowed
 
-	vector<string> execution; // collection of man who hanged vector
+vector<string> execution; // collection of man who hanged vector
 
-	void bodyFunction(int wrong, vector<string> execution);
+void bodyFunction(int wrong, vector<string> execution);
 
-	void Game(vector<string> words, string soFar, const string THE_WORD, string used);
+void Game(vector<string> words, string soFar, const string THE_WORD, string used);
 
-	void welcome();
+void welcome();
 
 int main()
 {
@@ -64,17 +63,16 @@ int main()
 	const string THE_WORD = words[0];            // word to guess
 	string soFar(THE_WORD.size(), '-');          // word guessed so far
 	string used = "";  
-	
-		welcome();
 
-		Game(words, soFar, THE_WORD, used);
+	welcome();
+
+	Game(words, soFar, THE_WORD, used);
 
 		
 
 }
 
-void Game(vector<string> words, string soFar, const string THE_WORD, 
-										string used) 
+void Game(vector<string> words, string soFar, const string THE_WORD, string used) 
 {
 	
     // main loop
@@ -206,5 +204,5 @@ void bodyFunction(int wrong, vector<string> execution)
 void welcome()
 {
    cout << "\t Welcome To Wonderful Game of Hangman, Animal Theme Edition! \n\n\n";
-	cout << " Rules: Guess a series of letters in an attempt to guess the randomized animal. " << endl;
+   cout << " Rules: Guess a series of letters in an attempt to guess the randomized animal. " << endl;
 }
