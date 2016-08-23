@@ -1,2 +1,2 @@
-# Simple-Interesting-Game
-This game is focused on the adventures of the users, and is made using very simple programming. 
+# Collection of Simple Games
+This repository consists of many different individual games written in C++.
